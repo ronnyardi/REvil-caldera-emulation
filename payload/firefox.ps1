@@ -27,3 +27,7 @@ if (Test-Path $installPath) {
     
     Write-Host "Mozilla Firefox has been installed successfully!"
 }
+
+# Prompt the user to press any key to close the terminal
+Write-Host "Press any key to close the terminal..."
+Read-Host | Out-Null
